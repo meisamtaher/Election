@@ -3,13 +3,17 @@ pragma solidity ^0.8.9;
 
 import "hardhat/console.sol";
 
-contract Election  {
+contract Elections  {
     //State Variables
     address payable public owner;
     string public name = "Election";
     string public constant symbol = "ELC";
     string public constant version = "0.1"; 
     uint public peopleCounter = 0;
+
+    constructor() payable {
+        owner = payable(msg.sender);
+    }
 
     //Enums 
     enum ElectionStatus{

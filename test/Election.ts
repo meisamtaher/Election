@@ -12,18 +12,18 @@ describe("Election", function () {
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
 
-    const Election = await ethers.getContractFactory("Election");
-    const election = await Election.deploy();
+    const Elections = await ethers.getContractFactory("Elections");
+    const elections = await Elections.deploy();
 
-    return { election, owner, otherAccount };
+    return { elections, owner, otherAccount };
   }
   
   describe("Deployment", function () {
 
     it("Should set the right owner", async function () {
-      const { election, owner } = await loadFixture(deployOneYearLockFixture);
+      const { elections, owner } = await loadFixture(deployOneYearLockFixture);
 
-      expect(await election.owner()).to.equal(owner.address);
+      expect(await elections.owner()).to.equal(owner.address);
     });
   });
 
