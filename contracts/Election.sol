@@ -3,25 +3,20 @@ pragma solidity ^0.8.9;
 
 import "hardhat/console.sol";
 
-contract Referandoms  {
+contract Election  {
     //State Variables
+    address payable public owner;
     string public name = "Election";
     string public constant symbol = "ELC";
     string public constant version = "0.1"; 
     uint public peopleCounter = 0;
 
     //Enums 
-
-    enum Vote{
-        YES, NO
-    }
-    enum Stats{
+    enum ElectionStatus{
         PENDING, FINISHED, NOTSTARTED
     }
 
     // Struct
-    
-     
     struct Person{
         address owner; 
         uint nationalID;
@@ -30,14 +25,14 @@ contract Referandoms  {
     struct Election{
         address owner;
         string name;
-        Vote[] votes;
+        bool[] votes;
         uint threshold;
-        uint maxDays;  
+        uint maxDays;
+        ElectionStatus status;  
     }
     Person[] public peoples;
     Election[] public elections;
-    mapping (address)
-    mapping (address => Vote[]) bollets;
+    mapping (address => bool[]) bollets;
 
     //uint8  public constant decimals = 18;
 
