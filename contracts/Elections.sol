@@ -36,6 +36,8 @@ contract Elections  {
     }
     Person[] public peoples;
     Election[] public elections;
+    // variable[address] = people1 
+    
     mapping (address => bool[]) bollets;
 
     //uint8  public constant decimals = 18;
@@ -50,6 +52,5 @@ contract Elections  {
         peoples[peopleCounter] = Person(msg.sender, _nationalID, _validator);
         peopleCounter++;
     }
-
 
 }
